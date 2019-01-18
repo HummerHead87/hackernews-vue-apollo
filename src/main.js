@@ -10,7 +10,7 @@ import Vue from 'vue'
 import VueApollo from 'vue-apollo'
 
 import App from './App'
-// import router from './router'
+import router from './router'
 
 Vue.config.productionTip = false
 
@@ -42,7 +42,7 @@ const apolloProvider = new VueApollo({
 new Vue({
   el: '#app',
   provide: apolloProvider.provide(),
-  // router,
+  router,
   components: { App },
   template: '<App/>'
 })

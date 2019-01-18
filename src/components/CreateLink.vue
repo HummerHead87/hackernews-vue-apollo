@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { CREATE_LINK_MUTATION } from '../constants/graphql'
+import { ALL_LINKS_QUERY, CREATE_LINK_MUTATION } from '../constants/graphql'
 
 export default {
   name: 'CreateLink',
@@ -35,7 +35,18 @@ export default {
         variables: {
           description,
           url
+        },
+        update: (store, { data: { createLink } }) => {
+          const data = store.readQuery({
+            query: ALL_LINKS_QUERY
+          })
+          data.allLinks.push(createLink)
+          store.writeQuery({ query: ALL_LINKS_QUERY, data })
         }
+      }).then((data) => {
+        this.$router.push({path: '/'})
+      }).catch((error) => {
+        console.error(error)
       })
     }
   }
