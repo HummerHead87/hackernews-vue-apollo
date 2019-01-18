@@ -1,14 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-// 1
 import CreateLink from '../components/CreateLink'
 import LinkList from '../components/LinkList'
+import AppLogin from '../components/AppLogin'
 
 Vue.use(Router)
 
 export default new Router({
-  // 2
   routes: [
     {
       path: '/',
@@ -17,8 +16,11 @@ export default new Router({
     {
       path: '/create',
       component: CreateLink
+    },
+    {
+      path: '/login',
+      component: AppLogin
     }
   ],
-  // 3
   mode: 'history'
 })
