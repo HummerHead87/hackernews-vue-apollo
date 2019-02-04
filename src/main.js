@@ -28,8 +28,10 @@ const wsClient = new SubscriptionClient(
   'wss://subscriptions.graph.cool/v1/cjr1pdmvs066v0163uxqlh0pq',
   {
     reconnect: true,
+    timeout: 30000,
     connectionParams: {
       authToken: localStorage.getItem(GC_AUTH_TOKEN)
+      // Authorization: `Bearer ${localStorage.getItem(GC_AUTH_TOKEN)}`
     }
   }
 )
@@ -74,7 +76,8 @@ let userId = localStorage.getItem(GC_USER_ID)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  provide: apolloProvider.provide(),
+  // provide: apolloProvider.provide(),
+  apolloProvider,
   router,
   data: {
     userId
